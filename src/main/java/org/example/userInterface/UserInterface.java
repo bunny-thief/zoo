@@ -21,6 +21,7 @@ public class UserInterface {
             System.out.println("Select an option from the following menu:");
             System.out.println("1 - Insert animal");
             System.out.println("2 - Display Animals");
+            System.out.println("3 - Delete animal");
             System.out.println("4 - Exit\n");
 
             System.out.print("Enter choice: ");
@@ -33,6 +34,11 @@ public class UserInterface {
 
             if (choice == 2) {
                 displayAnimals();
+                continue;
+            }
+
+            if (choice == 3) {
+                deleteAnimal();
                 continue;
             }
 
@@ -63,6 +69,20 @@ public class UserInterface {
         System.out.println();
         animalRepository.displayAnimals();
         System.out.println();
+    }
+
+    private void deleteAnimal() {
+        System.out.println("\nEnter animal name:");
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+
+        int result = animalRepository.deleteAnimal(name);
+
+        if (result == 1) {
+            System.out.printf("%s was deleted.\n\n", name);
+        } else {
+            System.out.printf("%s was not deleted.\n\n", name);
+        }
     }
 
 }
