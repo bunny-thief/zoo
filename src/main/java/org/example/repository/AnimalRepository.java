@@ -29,13 +29,28 @@ public class AnimalRepository {
         return 0;
     }
 
+    public int deleteAnimal(String name) {
+        String query = "DELETE FROM animals WHERE name = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, name);
+            return ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.printf("%s was not deleted from database", name);
+        }
+
+        return 0;
+    }
+
     public void displayAnimals() {
         String query = "SELECT * FROM animals";
 
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String species = rs.getString("species");
