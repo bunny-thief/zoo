@@ -56,6 +56,7 @@ public class AnimalRepository {
                 String species = rs.getString("species");
                 System.out.printf("%-3d | %-10s | %-10s\n", id, name, species);
             }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to display animals");
