@@ -20,6 +20,7 @@ public class UserInterface {
         while (true) {
             System.out.println("Select an option from the following menu:");
             System.out.println("1 - Insert animal");
+            System.out.println("2 - Display Animals");
             System.out.println("4 - Exit\n");
 
             System.out.print("Enter choice: ");
@@ -27,6 +28,11 @@ public class UserInterface {
 
             if (choice == 1) {
                 addAnimal();
+                continue;
+            }
+
+            if (choice == 2) {
+                displayAnimals();
                 continue;
             }
 
@@ -51,6 +57,12 @@ public class UserInterface {
         } else {
             System.out.printf("%s was not added.\n\n", name);
         }
+    }
+
+    private void displayAnimals() {
+        System.out.println();
+        animalRepository.displayAnimals();
+        System.out.println();
     }
 
 }
